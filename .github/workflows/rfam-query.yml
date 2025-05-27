@@ -1,0 +1,20 @@
+name: Run Rfam SQL Query
+
+on:
+  push:
+    paths:
+      - 'query.sql'
+
+jobs:
+  run-query:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install MySQL client
+        run: sudo apt-get update && sudo apt-get install -y mysql-client
+
+      - name: Run SQL query on Rfam public DB
+        run: |
+          mysql --user=rfamro --host=mysql-rfam-public.ebi.ac.uk --port=4497 --database=Rfam < query.sql
