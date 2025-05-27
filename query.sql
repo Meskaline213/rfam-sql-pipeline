@@ -1,7 +1,7 @@
 -- select * from fr.fram_acc limit 1; -- этот запрос недоступен
 
 -- Все РНК крыс (этот запрос должен работать)
-SELECT fr.rfamseq_acc, fr.seq_start, fr.seq_end
+SELECT fr.rfam_acc, fr.rfamseq_acc, fr.seq_start, fr.seq_end
 FROM full_region fr, rfamseq rf, taxonomy tx
 WHERE rf.ncbi_id = tx.ncbi_id
   AND fr.rfamseq_acc = rf.rfamseq_acc
